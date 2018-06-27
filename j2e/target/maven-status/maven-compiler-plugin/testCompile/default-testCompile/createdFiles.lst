@@ -1,0 +1,5 @@
+arquillian/AbstractTCFTest.class
+fr/unice/polytech/isa/tcf/entities/CustomerTest.class
+fr/unice/polytech/isa/tcf/entities/AdminTest.class
+fr/unice/polytech/isa/tcf/entities/TraderTest.class
+fr/unice/polytech/isa/tcf/entities/CustomerBeanTest.class

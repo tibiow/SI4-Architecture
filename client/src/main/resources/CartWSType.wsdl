@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://webservice.tcf.isa.polytech.unice.fr/" name="CartWebService" targetNamespace="http://webservice.tcf.isa.polytech.unice.fr/">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webservice.tcf.isa.polytech.unice.fr/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://webservice.tcf.isa.polytech.unice.fr/">
+            <xs:element name="addAdvantageToCustomerCart" type="tns:addAdvantageToCustomerCart"/>
+            <xs:element name="addAdvantageToCustomerCartResponse" type="tns:addAdvantageToCustomerCartResponse"/>
+            <xs:element name="getCustomerCartContents" type="tns:getCustomerCartContents"/>
+            <xs:element name="getCustomerCartContentsResponse" type="tns:getCustomerCartContentsResponse"/>
+            <xs:element name="removeAdvantageToCustomerCart" type="tns:removeAdvantageToCustomerCart"/>
+            <xs:element name="removeAdvantageToCustomerCartResponse" type="tns:removeAdvantageToCustomerCartResponse"/>
+            <xs:complexType name="getCustomerCartContents">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="customer_name" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getCustomerCartContentsResponse">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="cart_contents" type="tns:advantage"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="removeAdvantageToCustomerCart">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="customer_name" type="xs:string"/>
+                    <xs:element minOccurs="0" name="quantity" type="xs:int"/>
+                    <xs:element minOccurs="0" name="id" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="removeAdvantageToCustomerCartResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="addAdvantageToCustomerCart">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="customer_name" type="xs:string"/>
+                    <xs:element name="quantity" type="xs:int"/>
+                    <xs:element name="id" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="offer">
+                <xs:sequence>
+                    <xs:element name="name" type="xs:string"/>
+                    <xs:element name="description" type="xs:string"/>
+                    <xs:element name="image" type="xs:string"/>
+                    <xs:element name="gift" type="xs:boolean"/>
+                    <xs:element name="VUP" type="xs:boolean"/>
+                    <xs:element name="price" type="xs:double"/>
+                    <xs:element name="points" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="addAdvantageToCustomerCartResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:element name="UnknownCustomerException" type="tns:UnknownCustomerException"/>
+            <xs:complexType name="UnknownCustomerException">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="name" type="xs:string"/>
+                    <xs:element minOccurs="0" name="message" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="UncheckedException" type="tns:UncheckedException"/>
+            <xs:complexType name="UncheckedException">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="message" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="removeAdvantageToCustomerCartResponse">
+        <wsdl:part element="ns1:removeAdvantageToCustomerCartResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getCustomerCartContentsResponse">
+        <wsdl:part element="ns1:getCustomerCartContentsResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addAdvantageToCustomerCartResponse">
+        <wsdl:part element="ns1:addAdvantageToCustomerCartResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="UnknownCustomerException">
+        <wsdl:part element="ns1:UnknownCustomerException" name="UnknownCustomerException">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="UncheckedException">
+        <wsdl:part element="ns1:UncheckedException" name="UncheckedException">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getCustomerCartContents">
+        <wsdl:part element="ns1:getCustomerCartContents" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="removeAdvantageToCustomerCart">
+        <wsdl:part element="ns1:removeAdvantageToCustomerCart" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addAdvantageToCustomerCart">
+        <wsdl:part element="ns1:addAdvantageToCustomerCart" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="CartWebService">
+        <wsdl:operation name="getCustomerCartContents">
+            <wsdl:input message="ns1:getCustomerCartContents" name="getCustomerCartContents">
+            </wsdl:input>
+            <wsdl:output message="ns1:getCustomerCartContentsResponse" name="getCustomerCartContentsResponse">
+            </wsdl:output>
+            <wsdl:fault message="ns1:UnknownCustomerException" name="UnknownCustomerException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="removeAdvantageToCustomerCart">
+            <wsdl:input message="ns1:removeAdvantageToCustomerCart" name="removeAdvantageToCustomerCart">
+            </wsdl:input>
+            <wsdl:output message="ns1:removeAdvantageToCustomerCartResponse" name="removeAdvantageToCustomerCartResponse">
+            </wsdl:output>
+            <wsdl:fault message="ns1:UnknownCustomerException" name="UnknownCustomerException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addAdvantageToCustomerCart">
+            <wsdl:input message="ns1:addAdvantageToCustomerCart" name="addAdvantageToCustomerCart">
+            </wsdl:input>
+            <wsdl:output message="ns1:addAdvantageToCustomerCartResponse" name="addAdvantageToCustomerCartResponse">
+            </wsdl:output>
+            <wsdl:fault message="ns1:UnknownCustomerException" name="UnknownCustomerException">
+            </wsdl:fault>
+            <wsdl:fault message="ns1:UncheckedException" name="UncheckedException">
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

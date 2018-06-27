@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.polytech.unice.fr/si/4a/isa/tcf/catalogue" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://webservice.tcf.isa.polytech.unice.fr/" name="CatalogueServiceImplService" targetNamespace="http://www.polytech.unice.fr/si/4a/isa/tcf/catalogue">
+  <wsdl:import location="http://localhost:8080/tcf-backend/webservices/CatalogueWS?wsdl=CatalogueService.wsdl" namespace="http://webservice.tcf.isa.polytech.unice.fr/">
+    </wsdl:import>
+  <wsdl:binding name="CatalogueServiceImplServiceSoapBinding" type="ns1:CatalogueService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="removeItemToCatalogue">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="removeItemToCatalogue">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removeItemToCatalogueResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UnknownCustomerException">
+        <soap:fault name="UnknownCustomerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UncheckedException">
+        <soap:fault name="UncheckedException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="modifyItemToCatalogue">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="modifyItemToCatalogue">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="modifyItemToCatalogueResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UnknownCustomerException">
+        <soap:fault name="UnknownCustomerException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addItemToCatalogue">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addItemToCatalogue">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addItemToCatalogueResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UnknownCustomerException">
+        <soap:fault name="UnknownCustomerException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listAllItems">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="listAllItems">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listAllItemsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UnknownCustomerException">
+        <soap:fault name="UnknownCustomerException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CatalogueServiceImplService">
+    <wsdl:port binding="tns:CatalogueServiceImplServiceSoapBinding" name="CatalogueServiceImplPort">
+      <soap:address location="http://localhost:8080/tcf-backend/webservices/CatalogueWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

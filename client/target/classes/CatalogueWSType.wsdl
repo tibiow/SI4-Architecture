@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://webservice.tcf.isa.polytech.unice.fr/" name="CatalogueService" targetNamespace="http://webservice.tcf.isa.polytech.unice.fr/">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webservice.tcf.isa.polytech.unice.fr/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://webservice.tcf.isa.polytech.unice.fr/">
+            <xs:element name="listAllItems" type="tns:listAllItems"/>
+            <xs:element name="addItemToCatalogue" type="tns:addItemToCatalogue"/>
+            <xs:element name="addItemToCatalogueResponse" type="tns:addItemToCatalogueResponse"/>
+            <xs:element name="removeItemToCatalogue" type="tns:removeItemToCatalogue"/>
+            <xs:element name="removeItemToCatalogueResponse" type="tns:removeItemToCatalogueResponse"/>
+            <xs:element name="listAllItemsResponse" type="tns:listAllItemsResponse"/>
+            <xs:element name="modifyItemToCatalogue" type="tns:modifyItemToCatalogue"/>
+            <xs:element name="modifyItemToCatalogueResponse" type="tns:modifyItemToCatalogueResponse"/>
+            <xs:complexType name="listAllItems">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="listAllItemsResponse">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="offers" type="tns:offer"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="removeItemToCatalogue">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="customer_name" type="xs:string"/>
+                    <xs:element minOccurs="0" name="quantity" type="xs:int"/>
+                    <xs:element minOccurs="0" name="id" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="removeItemToCatalogueResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="addItemToCatalogue">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="customer_name" type="xs:string"/>
+                    <xs:element name="quantity" type="xs:int"/>
+                    <xs:element name="name" type="xs:string"/>
+                    <xs:element name="description" type="xs:string"/>
+                    <xs:element name="image" type="xs:string"/>
+                    <xs:element name="gift" type="xs:boolean"/>
+                    <xs:element name="VUP" type="xs:boolean"/>
+                    <xs:element name="price" type="xs:double"/>
+                    <xs:element name="points" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="addItemToCatalogueResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="modifyItemToCatalogue">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="customer_name" type="xs:string"/>
+                    <xs:element name="quantity" type="xs:int"/>
+                    <xs:element name="name" type="xs:string"/>
+                    <xs:element name="description" type="xs:string"/>
+                    <xs:element name="image" type="xs:string"/>
+                    <xs:element name="gift" type="xs:boolean"/>
+                    <xs:element name="VUP" type="xs:boolean"/>
+                    <xs:element name="price" type="xs:double"/>
+                    <xs:element name="points" type="xs:int"/>
+                    <xs:element minOccurs="0" name="id" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="modifyItemToCatalogueResponse">
+                <xs:sequence/>
+            </xs:complexType>
+            <xs:complexType name="offer">
+                <xs:sequence>
+                    <xs:element name="name" type="xs:string"/>
+                    <xs:element name="description" type="xs:string"/>
+                    <xs:element name="image" type="xs:string"/>
+                    <xs:element name="gift" type="xs:boolean"/>
+                    <xs:element name="VUP" type="xs:boolean"/>
+                    <xs:element name="price" type="xs:double"/>
+                    <xs:element name="points" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="UncheckedException" type="tns:UncheckedException"/>
+            <xs:complexType name="UncheckedException">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="message" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="UnknownCustomerException" type="tns:UnknownCustomerException"/>
+            <xs:complexType name="UnknownCustomerException">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="name" type="xs:string"/>
+                    <xs:element minOccurs="0" name="message" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="removeItemToCatalogueResponse">
+        <wsdl:part element="ns1:removeItemToCatalogueResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="removeItemToCatalogue">
+        <wsdl:part element="ns1:removeItemToCatalogue" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="addItemToCatalogueResponse">
+        <wsdl:part element="ns1:addItemToCatalogueResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addItemToCatalogue">
+        <wsdl:part element="ns1:addItemToCatalogue" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="modifyItemToCatalogueResponse">
+        <wsdl:part element="ns1:modifyItemToCatalogueResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="modifyItemToCatalogue">
+        <wsdl:part element="ns1:modifyItemToCatalogue" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="listAllItems">
+        <wsdl:part element="ns1:listAllItems" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="listAllItemsResponse">
+        <wsdl:part element="ns1:listAllItemsResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="UnknownCustomerException">
+        <wsdl:part element="ns1:UnknownCustomerException" name="UnknownCustomerException">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="UncheckedException">
+        <wsdl:part element="ns1:UncheckedException" name="UncheckedException">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="CustomerCacvice">
+        <wsdl:operation name="addItemToCatalogue">
+            <wsdl:input message="ns1:addItemToCatalogue" name="addItemToCatalogue">
+            </wsdl:input>
+            <wsdl:output message="ns1:addItemToCatalogueResponse" name="addItemToCatalogueResponse">
+            </wsdl:output>
+            <wsdl:fault message="ns1:UnknownCustomerException" name="UnknownCustomerException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="modifyItemToCatalogue">
+            <wsdl:input message="ns1:modifyItemToCatalogue" name="modifyItemToCatalogue">
+            </wsdl:input>
+            <wsdl:output message="ns1:modifyItemToCatalogueResponse" name="modifyItemToCatalogueResponse">
+            </wsdl:output>
+            <wsdl:fault message="ns1:UnknownCustomerException" name="UnknownCustomerException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="removeItemToCatalogue">
+            <wsdl:input message="ns1:removeItemToCatalogue" name="removeItemToCatalogue">
+            </wsdl:input>
+            <wsdl:output message="ns1:removeItemToCatalogueResponse" name="removeItemToCatalogueResponse">
+            </wsdl:output>
+            <wsdl:fault message="ns1:UnknownCustomerException" name="UnknownCustomerException">
+            </wsdl:fault>
+            <wsdl:fault message="ns1:UncheckedException" name="UncheckedException">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="listAllItems">
+            <wsdl:input message="ns1:listAllItems" name="listAllItems">
+            </wsdl:input>
+            <wsdl:output message="ns1:listAllItemsResponse" name="listAllItemsResponse">
+            </wsdl:output>
+            <wsdl:fault message="ns1:UnknownCustomerException" name="UnknownCustomerException">
+            </wsdl:fault>
+        </wsdl:operation>
+
+    </wsdl:portType>
+</wsdl:definitions>
